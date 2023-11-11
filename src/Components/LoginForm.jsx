@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
-import { Send, Troubleshoot } from "@mui/icons-material";
+import { Send } from "@mui/icons-material";
 import {
-  Alert,
   Box,
   Button,
   FormControl,
@@ -68,12 +67,10 @@ const LoginForm = () => {
       );
       const result = await response.json();
       if (result.message) {
-        return (
-          toast.success(result.message)
-        );
+        return toast.success(result.message);
       }
     } catch (error) {
-      console.error(error.message);
+      toast.error(error);
     }
   };
 
