@@ -162,6 +162,7 @@ const LoginForm = () => {
           label="OTP type"
           name="type"
           onChange={changeHandler}
+          value={formData.type}
           sx={{ color: "white", padding: "0 15px" }}
         >
           <MenuItem value="">

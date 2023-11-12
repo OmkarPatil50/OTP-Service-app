@@ -4,8 +4,6 @@ import {
   Box,
   Button,
   Container,
-  IconButton,
-  Menu,
   Toolbar,
   Typography,
 } from "@mui/material";
@@ -35,17 +33,6 @@ const Navbar = () => {
             OTP SERVICE
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              color="inherit"
-            >
-              <Menu />
-            </IconButton>
-          </Box>
           <VpnKey sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
