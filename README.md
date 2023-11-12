@@ -1,4 +1,3 @@
-```markdown
 # OTP Service App
 
 Welcome to the OTP Service App! This application allows you to generate and verify OTPs using the provided API.
