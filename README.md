@@ -1,6 +1,6 @@
 # OTP Service App
 
-Welcome to the OTP Service App! This application allows you to generate and verify OTPs using the provided API.
+Welcome to the OTP Service App! This application allows you to generate and verify OTPs using the provided API via email. Users can choose the OTP type (numeric, alphanumeric, or alphabet-based) and provide additional details such as the organization name and email subject. The service will then send an email containing the OTP to the user's email address.
 
 ## Table of Contents
 
