@@ -35,7 +35,7 @@ The interface is designed to be responsive and visually appealing.
 
 ### Deployment
 
-The frontend is deployed on Vercel. You can access it through the provided deployment link.
+The frontend is deployed on Vercel. You can access it through the provided deployment link. Here [https://otp-service-app.vercel.app/](https://otp-service-app.vercel.app/).
 
 
 ## Local Setup
