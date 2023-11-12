@@ -121,7 +121,6 @@ const VerificationForm = () => {
         }
       );
       const result = await response.json();
-      console.log(result);
       if (result.message) {
         dispatch({ type: "SET_LOADING", payload: false });
         toast.success(result.message);

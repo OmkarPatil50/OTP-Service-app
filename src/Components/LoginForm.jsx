@@ -75,7 +75,6 @@ const LoginForm = () => {
         }
       );
       const result = await response.json();
-      console.log(result);
       if (result.message) {
         dispatch({ type: "SET_LOADING", payload: false });
         toast.success(result.message);
@@ -97,7 +96,7 @@ const LoginForm = () => {
   });
 
   return (
-    <Box width={480} sx={{padding:'25px'}}>
+    <Box width={480} sx={{ padding: "25px" }}>
       <Typography
         variant="h4"
         textAlign="center"
