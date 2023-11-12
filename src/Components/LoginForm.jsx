@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import { Send } from "@mui/icons-material";
 import {
@@ -11,8 +12,9 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AppContext } from "../Context/AppContext";
 
 const StyledFormControl = styled(FormControl)({
   width: "100%",
@@ -20,20 +22,25 @@ const StyledFormControl = styled(FormControl)({
 });
 
 const StyledInputLabel = styled(InputLabel)({
-  color: "white",
+  color: "#ccc",
+  alignSelf: "center",
 });
 
 const StyledButton = styled(Button)({
   margin: "40px 0 20px 0 ",
   padding: "10px 20px",
+  width: "100%",
 });
 
 const StyledInput = styled(Input)({
   color: "white",
   padding: "0 15px",
+  fontSize: "18px",
 });
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     type: "",
@@ -42,6 +49,8 @@ const LoginForm = () => {
   });
 
   const [isClicked, setIsClicked] = useState(false);
+
+  const { dispatch } = useContext(AppContext);
 
   const changeHandler = (event) => {
     return setFormData((prev) => {
@@ -66,11 +75,20 @@ const LoginForm = () => {
         }
       );
       const result = await response.json();
+      console.log(result);
       if (result.message) {
-        return toast.success(result.message);
+        dispatch({ type: "SET_LOADING", payload: false });
+        toast.success(result.message);
+        navigate("/verify", {
+          state: formData,
+        });
+      } else {
+        dispatch({ type: "SET_LOADING", payload: false });
+        toast.error(`${result.error}, Please try after some time!`);
       }
     } catch (error) {
-      toast.error(error);
+      dispatch({ type: "SET_LOADING", payload: false });
+      toast.error(`${error}, Please try after some time!`);
     }
   };
 
@@ -79,9 +97,9 @@ const LoginForm = () => {
   });
 
   return (
-    <Box width={480}>
+    <Box width={480} sx={{padding:'25px'}}>
       <Typography
-        variant="h5"
+        variant="h4"
         textAlign="center"
         sx={{ color: "white", marginBottom: "10px" }}
       >
@@ -89,16 +107,14 @@ const LoginForm = () => {
       </Typography>
 
       <StyledFormControl>
-        <StyledInputLabel htmlFor="email" sx={{ color: "white" }}>
-          Email address
-        </StyledInputLabel>
+        <StyledInputLabel htmlFor="email">Email address</StyledInputLabel>
         <StyledInput
           id="email"
           name="email"
+          type="email"
           required
           onChange={changeHandler}
           aria-describedby="my-helper-text"
-          sx={{ color: "white" }}
         />
         {isClicked && !formData.email.length ? (
           <StyledFormHelperText id="my-helper-text">
@@ -115,7 +131,7 @@ const LoginForm = () => {
         )}
       </StyledFormControl>
       <StyledFormControl>
-        <StyledInputLabel htmlFor="organization" sx={{ color: "white" }}>
+        <StyledInputLabel htmlFor="organization">
           Name of Organization
         </StyledInputLabel>
         <StyledInput
@@ -124,7 +140,6 @@ const LoginForm = () => {
           required
           onChange={changeHandler}
           aria-describedby="my-helper-text"
-          sx={{ color: "white" }}
         />
         {isClicked && !formData.organization.length ? (
           <StyledFormHelperText id="my-helper-text">
@@ -135,7 +150,7 @@ const LoginForm = () => {
         )}
       </StyledFormControl>
 
-      <StyledFormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+      <StyledFormControl variant="standard" sx={{ minWidth: 120 }}>
         <StyledInputLabel
           id="demo-simple-select-standard-label"
           sx={{ padding: "0 10px" }}
@@ -158,7 +173,7 @@ const LoginForm = () => {
           <MenuItem value="alphabet-based">Alphabet-Based</MenuItem>
         </Select>
         {isClicked && !formData.type.length ? (
-          <StyledFormHelperText id="my-helper-text">
+          <StyledFormHelperText id="my-helper-text" sx={{ marginLeft: "15px" }}>
             OTP Type is Required*
           </StyledFormHelperText>
         ) : (
@@ -176,6 +191,7 @@ const LoginForm = () => {
             formData.organization.length &&
             checkEmail(formData.email)
           ) {
+            dispatch({ type: "SET_LOADING", payload: true });
             handleSend();
           }
         }}
