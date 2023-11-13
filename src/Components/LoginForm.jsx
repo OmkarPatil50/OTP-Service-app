@@ -170,7 +170,7 @@ const LoginForm = () => {
           </MenuItem>
           <MenuItem value="numeric">Numeric</MenuItem>
           <MenuItem value="alphanumeric">Alphanumeric</MenuItem>
-          <MenuItem value="alphabet-based">Alphabet-Based</MenuItem>
+          <MenuItem value="alphabet">Alphabet-Based</MenuItem>
         </Select>
         {isClicked && !formData.type.length ? (
           <StyledFormHelperText id="my-helper-text" sx={{ marginLeft: "15px" }}>
