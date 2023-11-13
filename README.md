@@ -1,7 +1,6 @@
-```markdown
 # OTP Service App
 
-Welcome to the OTP Service App! This application allows you to generate and verify OTPs using the provided API.
+Welcome to the OTP Service App! This application allows you to generate and verify OTPs using the provided API via email. Users can choose the OTP type (numeric, alphanumeric, or alphabet-based) and provide additional details such as the organization name and email subject. The service will then send an email containing the OTP to the user's email address.
 
 ## Table of Contents
 
@@ -36,7 +35,7 @@ The interface is designed to be responsive and visually appealing.
 
 ### Deployment
 
-The frontend is deployed on Vercel. You can access it through the provided deployment link.
+The frontend is deployed on Vercel. You can access it through the provided deployment link. Here [https://otp-service-app.vercel.app/](https://otp-service-app.vercel.app/).
 
 
 ## Local Setup
