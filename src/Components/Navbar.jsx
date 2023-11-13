@@ -1,20 +1,15 @@
 import { VpnKey } from "@mui/icons-material";
 import {
   AppBar,
-  Box,
   Button,
   Container,
   IconButton,
   Toolbar,
   Typography,
-  useTheme,
-  useMediaQuery,
 } from "@mui/material";
 import React from "react";
 
 const Navbar = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "#27272a" }}>

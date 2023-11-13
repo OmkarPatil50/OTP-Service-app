@@ -30,11 +30,10 @@ const VerificationForm = () => {
 
   const StyledBox = styled(Box)({
     backgroundColor: "#27272a",
-    width: "80%",
     maxWidth: "550px",
     margin: "0 auto",
     textAlign: "center",
-    padding: "30px",
+
     borderRadius: "10px",
   });
 
@@ -148,7 +147,12 @@ const VerificationForm = () => {
   }, [timer]);
 
   return (
-    <StyledBox>
+    <StyledBox
+      sx={{
+        width: { xs: "87.5%", md: "80%" },
+        padding: { xs: "10px", md: "30px" },
+      }}
+    >
       <AssignmentInd
         sx={{
           color: "white",
