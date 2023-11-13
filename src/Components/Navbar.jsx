@@ -4,62 +4,48 @@ import {
   Box,
   Button,
   Container,
+  IconButton,
   Toolbar,
   Typography,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material";
 import React from "react";
 
 const Navbar = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <AppBar position="sticky" sx={{ backgroundColor: "#27272a" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <VpnKey sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <IconButton sx={{ display: "flex" }} color="inherit">
+            <VpnKey />
+          </IconButton>
           <Typography
-            variant="h6"
-            noWrap
-            component="a"
             href="/"
             sx={{
               mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            OTP SERVICE
-          </Typography>
-
-          <VpnKey sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
+              display: "flex",
               flexGrow: 1,
               fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
+              fontSize: "1.2rem",
             }}
           >
             OTP SERVICE
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Button
-              key="login"
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              Login
-            </Button>
-          </Box>
+          <Button
+            key="login"
+            sx={{ my: 2, color: "white", display: "block" }}
+            href="/"
+          >
+            Login
+          </Button>
         </Toolbar>
       </Container>
     </AppBar>
